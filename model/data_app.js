@@ -14,4 +14,4 @@ const data_aplikasi = new mongoose.Schema({
                 timestamp: Date}]
 });
 
-export default data_aplikasi
+module.exports = data_aplikasi;
