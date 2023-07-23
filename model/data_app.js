@@ -8,7 +8,10 @@ const data_aplikasi = new mongoose.Schema({
     URLthumbnail: {
         type: String,
         required: true
-    }
+    },
+    comments: [{userName: String,
+                userComment: String,
+                timestamp: Date}]
 });
 
 export default data_aplikasi
