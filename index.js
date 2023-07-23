@@ -47,6 +47,16 @@ app.get('/video/:id/comments', async (req, res) => {
     }
 })
 
+app.post('/video/:id/comments', async (req, res) => {
+    try {
+        const {Name, Comment, TimeStamp, ID} = req.body;
+        data_app.findOne({videoID: ID}).updateOne({userName: Name, userComment: Comment, TimeStamp: TimeStamp});
+        res.status(200).send("Success");
+    } catch (error) {
+        res.send("Gagal");
+    }
+})
+
 app.listen(port, () => {
     console.log(`Server berjalan pada port ${port}`);
 })
