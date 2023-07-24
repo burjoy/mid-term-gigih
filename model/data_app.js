@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const data_aplikasi = new mongoose.Schema({
+const format_data_aplikasi = new mongoose.Schema({
     videoID: {
         type: String,
         required: true
@@ -11,7 +11,9 @@ const data_aplikasi = new mongoose.Schema({
     },
     comments: [{userName: String,
                 userComment: String,
-                timestamp: Date}]
+                timestamp: String}]
 });
+
+const data_aplikasi = mongoose.model("db_aplikasi", format_data_aplikasi);
 
 module.exports = data_aplikasi;
