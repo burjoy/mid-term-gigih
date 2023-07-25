@@ -9,6 +9,12 @@ const format_data_aplikasi = new mongoose.Schema({
         type: String,
         required: true
     },
+    products: [{
+        productID: String,
+        productLink: String,
+        productTitle: String,
+        productPrice: Number
+    }],
     comments: [{userName: String,
                 userComment: String,
                 timestamp: String}]
