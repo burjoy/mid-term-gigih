@@ -21,7 +21,11 @@ app.use(cors());
 app.get('/', async (req, res) => {
     try {
         const result = await data_app.find({});
-        res.json(result);
+        const videoData = result.map(object_video => ({
+            "videoID": object_video.videoID,
+            "URLthumbnail": object_video.URLthumbnail
+        }));
+        res.json(videoData);
     } catch (error) {
         res.json(error);
     }
