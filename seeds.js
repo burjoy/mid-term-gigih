@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {data_video, data_komen_video, data_product_video} = require('./model/data_app');
+const {data_video, data_komen_video, data_product_video} = require('./models/data_app');
 
 mongoose.connect('mongodb://127.0.0.1/app_db')
 .then((response) => {
