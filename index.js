@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
-const data_app = require('./model/data_app');
+const {data_video, data_komen_video, data_product_video} = require('./model/data_app');
 const port = 3000;
 
 app.use(express.json());
@@ -20,8 +20,8 @@ app.use(cors());
 
 app.get('/', async (req, res) => {
     try {
-        const result = await data_app.find({});
-        const videoData = result.map(object_video => ({
+        const result = await data_video.findOne();
+        const videoData = result.videoData.map(object_video => ({
             "videoID": object_video.videoID,
             "URLthumbnail": object_video.URLthumbnail
         }));
@@ -34,8 +34,14 @@ app.get('/', async (req, res) => {
 app.get('/video/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const result = await data_app.findOne({videoID: id});
-        res.json([result.productID, result.productLink, result.productTitle, result.productPrice]);
+        const result = await data_product_video.findOne({videoID: id});
+        const productData = result.products.map(object_product => ({
+            "productID": object_product.productID,
+            "productLink": object_product.productLink,
+            "productTitle": object_product.productTitle,
+            "productPrice": object_product.productPrice
+        }))
+        res.json(productData);
     } catch (error) {
         res.json(error);
     }
@@ -44,14 +50,14 @@ app.get('/video/:id', async (req, res) => {
 app.get('/video/:id/comments', async (req, res) => {
     try {
         const id = req.params.id;
-        const result = await data_app.findOne({videoID: id});
-        res.json(result.comments); //ide: bikin komen 1 vid kedalem array of object, 1 object isinya data komen dari 1 user
+        const result = await data_komen_video.find({"videoID": id});
+        res.json(result); //ide: bikin komen 1 vid kedalem array of object, 1 object isinya data komen dari 1 user
     } catch (error) {
         res.json(error);
     }
 })
 
-app.post('/video/:id/comments', async (req, res) => {
+app.post('/video/:id/comments/post', async (req, res) => {
     try {
         const ID = req.params.id;
         const {Name, Comment} = req.body;
@@ -59,10 +65,10 @@ app.post('/video/:id/comments', async (req, res) => {
             res.status(400).send("Client side error: :Lack of parameters");
         }
         else{
-            data_app.findOneAndUpdate({"videoID": ID}, 
+            data_komen_video.findOneAndUpdate({"videoID": ID}, 
             {$push: {"comments": [{
-                "userName":Name, 
-                "userComment":Comment, 
+                "username":Name, 
+                "comment":Comment, 
                 "timestamp": new Date().toString()}]}}, {new: true})
             .then(updatedDoc => {
                 console.log("Document Updated Successfully");
@@ -70,7 +76,7 @@ app.post('/video/:id/comments', async (req, res) => {
             .catch(error => {
                 console.error("Error Occurred:", error);
             });
-            const result = await data_app.findOne({videoID: ID});
+            const result = await data_komen_video.findOne({videoID: ID});
             console.log(result);
             res.status(200).send(result);
         }
