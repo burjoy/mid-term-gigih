@@ -26,7 +26,7 @@ async function getProduct(req, res) {
       "productTitle": object_product.productTitle,
       "productPrice": object_product.productPrice
     }));
-    videoView.renderVideoProductData(res, productData);
+    videoView.renderProduct(res, productData);
   } catch (error) {
     res.json(error);
   }
