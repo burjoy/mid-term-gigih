@@ -28,3 +28,20 @@ Didalam collection `data_product_video` terdapat:<br />
 Ketiga collection ini terhubung dengan field `videoID`. Field `videoID` berperan sebagai key yang dapat mengakses data-data dari masing-masing collection. Sebagai contoh, apabila user ingin mengakses komentar pada suatu video, maka user dapat meng-query collection `data_komen_video` menggunakan `videoID`.
 
 ## Struktur API
+Dibawah ini merupakan endpoint dan respon dari request API:<br />
+1. `GET /`:
+&emsp;-Mengambil semua ID video beserta link thumbnailnya
+&emsp;-Response:
+&emsp;&emsp;```json
+[
+    {
+        "videoID": "kqtD5dpn9C8",
+        "URLthumbnail": "https://i.ytimg.com/vi/kqtD5dpn9C8/default.jpg"
+    },
+    {
+        "videoID": "rfscVS0vtbw",
+        "URLthumbnail": "https://i.ytimg.com/vi/rfscVS0vtbw/default.jpg"
+    },
+    ...
+]
+```
