@@ -5,8 +5,8 @@ const commentView = require('../views/videoView');
 async function getComments(req, res) {
   try {
     const id = req.params.id;
-    const result = await data_komen_video.find({ "videoID": id });
-    commentView.renderComments(res, result);
+    const result = await data_komen_video.findOne({ "videoID": id });
+    commentView.renderComments(res, result.comments);
   } catch (error) {
     res.json(error);
   }
