@@ -110,9 +110,10 @@ Untuk menjalankan program ini secara lokal, berikut langkah-langkahnya:
 -`npm install --g nodemon` untuk menginstall node monitor (opsional)<br />
 4. Jalankan server MongoDB di local machine Anda dengan mengetik perintah berikut di terminal Anda:<br />
 `mongod --dbpath="lokasi_database"` dengan lokasi_database merupakan tempat dimana database Anda berjalan di local machine. Pada program ini, database yang digunakan bernama app_db. Anda dapat mengubahnya sesuai dengan nama database yang Anda miliki<br />
-5. Jalankan server API dengan mengetik perintah berikut di terminal Anda: <br />
+5. Sebelum menjalankan server API, generate data untuk database terlebih dahulu. Hal ini dapat dilakukan dengan mengetik `node seeds.js` pada terminal Anda. Perlu diingat, pada file index.js dan seeds.js, database yang digunakan bernama app_db. Apabila database Anda memiliki nama yang lain, Anda dapat mengganti lokasi database pada program terlebih dahulu<br />
+6. Jalankan server API dengan mengetik perintah berikut di terminal Anda: <br />
 `node index.js` <br />
 atau jika Anda tidak ingin restart server setiap ada perubahan, Anda dapat menggunakan nodemon:
 `nodemon index.js` <br />
-6. Sekarang, server seharusnya telah berjalan di `http://localhost:3000`<br />
-7. Setelah server API berjalan, Anda dapat mencoba request API program ini. Anda dapat menggunakan postman atau cURL untuk mengujinya <br />
+7. Sekarang, server seharusnya telah berjalan di `http://localhost:3000`<br />
+8. Setelah server API berjalan, Anda dapat mencoba request API program ini. Anda dapat menggunakan postman atau cURL untuk mengujinya <br />
