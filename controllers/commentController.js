@@ -41,8 +41,7 @@ async function postComment(req, res) {
         });
 
       // Fetch and return the updated comments after posting
-      const result = await data_komen_video.findOne({ videoID: ID });
-      commentView.renderComments(res, result);
+      commentView.renderPostComments(res, result);
     }
   } catch (error) {
     console.log(error);
