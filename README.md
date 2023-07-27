@@ -87,7 +87,7 @@ Success: <br />
 &emsp;-Menambahkan komentar baru pada video yang bersangkutan<br />
 &emsp;-Parameter URL: `id=[string]`<br />
 &emsp;-Parameter Data: <br />
-&emsp;```javascript
+```javascript
 {
     Name: string,
     Comment: string
