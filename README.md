@@ -29,19 +29,70 @@ Ketiga collection ini terhubung dengan field `videoID`. Field `videoID` berperan
 
 ## Struktur API
 Dibawah ini merupakan endpoint dan respon dari request API:<br />
-1. `GET /`:
-&emsp;-Mengambil semua ID video beserta link thumbnailnya
-&emsp;-Response:
-&emsp;&emsp;```json
+1. `GET /`:<br />
+&emsp;-Mengambil semua ID video beserta link thumbnailnya<br />
+&emsp;-Parameter URL: Tidak ada<br />
+&emsp;-Parameter Data: Tidak ada<br />
+&emsp;-Header: Content-Type: application/json<br />
+&emsp;-Response:<br />
+Success: <br />
+```javascript
 [
     {
-        "videoID": "kqtD5dpn9C8",
-        "URLthumbnail": "https://i.ytimg.com/vi/kqtD5dpn9C8/default.jpg"
-    },
-    {
-        "videoID": "rfscVS0vtbw",
-        "URLthumbnail": "https://i.ytimg.com/vi/rfscVS0vtbw/default.jpg"
+        "videoID": string,
+        "URLthumbnail": string
     },
     ...
 ]
 ```
+
+2. `GET /video/:id`:<br />
+&emsp;-Mengambil semua informasi produk yang terkait dengan video yang bersangkutan<br />
+&emsp;-Parameter URL: `id=[string]`<br />
+&emsp;-Parameter Data: Tidak ada<br />
+&emsp;-Header: Content-Type: application/json<br />
+&emsp;-Response: <br />
+Success: <br />
+```javascript
+[
+    {
+        "productID": string,
+        "productLink": string,
+        "productTitle": string,
+        "productPrice": integer
+    },
+    ...
+]
+```
+
+3. `GET /video/:id/comments`:<br />
+&emsp;-Mengambil semua komentar yang terkait dengan video yang bersangkutan<br />
+&emsp;-Parameter URL: `id=[string]`<br />
+&emsp;-Parameter Data: Tidak ada<br />
+&emsp;Header: Content-Type: application/json<br />
+&emsp;Response: <br />
+Success: <br />
+```javascript
+[
+    {
+        "username": string,
+        "comment": string,
+        "timestamp": string,
+    },
+    ...
+]
+```
+
+4. `POST /video/:id/comments/post`<br />
+&emsp;-Menambahkan komentar baru pada video yang bersangkutan<br />
+&emsp;-Parameter URL: `id=[string]`<br />
+&emsp;-Parameter Data: <br />
+```javascript
+{
+    Name: string,
+    Comment: string
+}
+```
+&emsp;Response: <br />
+&emsp;&emsp;Success: Kode 200<br />
+&emsp;&emsp;Fail: Kode 400
