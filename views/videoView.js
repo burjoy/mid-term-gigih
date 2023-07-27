@@ -12,10 +12,16 @@ function renderVideoData(res, videoData) {
   function renderComments(res, comments) {
     res.json(comments);
   }
+
+  // Response function after user submitted a comment
+  function renderPostComments(res) {
+    res.status(200).json("Success");
+  }
   
   module.exports = {
     renderVideoData,
     renderProduct,
     renderComments,
+    renderPostComments
   };
   
