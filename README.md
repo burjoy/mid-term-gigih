@@ -5,8 +5,8 @@ Aplikasi ini menggunakan MongoDB sebagai database. Di dalam database, terdapat 3
 1. `data_video` collection:<br />
 Didalam collection `data_video` terdapat:<br />
 -`videoData`: Sebuah array berisi object yang menyimpan informasi video. Didalam `videoData` berisi:<br />
-   .. -`videoID`: Sebuah string yang merepresentasikan identifier untuk video  
-   .. -`URLthumbnail`: Sebuah string yang merepresentasikan link gambar untuk thumbnail video<br />
+   ..-`videoID`: Sebuah string yang merepresentasikan identifier untuk video  
+   ..-`URLthumbnail`: Sebuah string yang merepresentasikan link gambar untuk thumbnail video<br />
 
 3. `data_komen_video` collection:
 Didalam collection `data_komen_video` terdapat:
