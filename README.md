@@ -29,9 +29,9 @@ Ketiga collection ini terhubung dengan field `videoID`. Field `videoID` berperan
 
 ## Struktur API
 Dibawah ini merupakan endpoint dan respon dari request API:<br />
-1. `GET /`:
-&emsp;-Mengambil semua ID video beserta link thumbnailnya
-&emsp;-Response:
+1. `GET /`:<br />
+&emsp;-Mengambil semua ID video beserta link thumbnailnya<br />
+&emsp;-Response:<br />
 ```javascript
 [
     {
