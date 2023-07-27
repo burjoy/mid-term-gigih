@@ -32,7 +32,7 @@ Dibawah ini merupakan endpoint dan respon dari request API:<br />
 1. `GET /`:
 &emsp;-Mengambil semua ID video beserta link thumbnailnya
 &emsp;-Response:
-```json
+```javascript
 [
     {
         "videoID": "kqtD5dpn9C8",
