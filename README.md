@@ -94,5 +94,5 @@ Success: <br />
 }
 ```
 &emsp;Response: <br />
-Success: Kode 200<br />
-Fail: Kode 400
+&emsp;&emsp;Success: Kode 200<br />
+&emsp;&emsp;Fail: Kode 400
