@@ -96,3 +96,23 @@ Success: <br />
 &emsp;Response: <br />
 &emsp;&emsp;Success: Kode 200<br />
 &emsp;&emsp;Fail: Kode 400
+
+## How To Run
+Untuk menjalankan program ini secara lokal, berikut langkah-langkahnya:
+1. Clone repository ini ke lokal machine Anda. Apabila Anda menggunakan git, clone repository dapat dilakukan dengan langkah berikut:<br />
+   &emsp;-Copy link berikut: https://github.com/burjoy/mid-term-gigih.git<br />
+   &emsp;-Buka terminal git Anda, lalu ketik `git clone (link yang sudah dicopy)` tanpa tanda kurung<br />
+2. Pastikan bahwa Anda telah memasang Node.js dan MongoDB pada perangkat Anda. Untuk memeriksa apakah Anda sudah memasang Node atau belum, Anda dapat mengetik perintah `node -v` pada terminal Anda. Untuk memeriksa apakah Anda sudah memasang MongoDB, Anda dapat mengetik perintah `mongod -version` pada terminal Anda <br />
+3. Install package yang diperlukan oleh program dengan mengetik perintah berikut pada terminal Anda: <br />
+-`npm install express` untuk menginstall express.js<br />
+-`npm install cors` untuk menginstall package cors<br />
+-`npm install mongoose` untuk menginstall mongoose<br />
+-`npm install --g nodemon` untuk menginstall node monitor (opsional)<br />
+4. Jalankan server MongoDB di local machine Anda dengan mengetik perintah berikut di terminal Anda:<br />
+`mongod --dbpath="lokasi_database"` dengan lokasi_database merupakan tempat dimana database Anda berjalan di local machine. Pada program ini, database yang digunakan bernama app_db. Anda dapat mengubahnya sesuai dengan nama database yang Anda miliki<br />
+5. Jalankan server API dengan mengetik perintah berikut di terminal Anda: <br />
+`node index.js` <br />
+atau jika Anda tidak ingin restart server setiap ada perubahan, Anda dapat menggunakan nodemon:
+`nodemon index.js` <br />
+6. Sekarang, server seharusnya telah berjalan di `http://localhost:3000`<br />
+7. Setelah server API berjalan, Anda dapat mencoba request API program ini. Anda dapat menggunakan postman atau cURL untuk mengujinya <br />
