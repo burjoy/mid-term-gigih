@@ -26,3 +26,5 @@ Didalam collection `data_product_video` terdapat:
     -`productPrice`: Sebuah data berformat Number yang menyatakan harga dari produk yang bersangkutan
 
 Ketiga collection ini terhubung dengan field `videoID`. Field `videoID` berperan sebagai key yang dapat mengakses data-data dari masing-masing collection. Sebagai contoh, apabila user ingin mengakses komentar pada suatu video, maka user dapat meng-query collection `data_komen_video` menggunakan `videoID`.
+
+## Struktur API
