@@ -17,37 +17,53 @@ async function postComment(req, res) {
   try {
     const ID = req.params.id;
     const { Name, Comment } = req.body;
+
     if (!Name || !Comment) {
       res.status(400).send("Client side error: Lack of parameters");
     } else {
-      // Update the comments in the database
-      data_komen_video.findOneAndUpdate({ "videoID": ID },
-        {
-          $push: {
-            "comments": [{
-              "username": Name,
-              "comment": Comment,
-              "timestamp": new Date().toString()
-            }]
-          }
-        },
-        { new: true }
-      )
-        .then(updatedDoc => {
-          console.log("Document Updated Successfully");
-        })
-        .catch(error => {
-          console.error("Error Occurred:", error);
+      const existingDoc = await data_komen_video.findOne({ "videoID": ID });
+
+      if (!existingDoc) {
+        console.log("Membuat Document");
+        await data_komen_video.create({
+          videoID: ID,
+          comments: [{
+            username: Name,
+            comment: Comment,
+            timestamp: new Date().toString()
+          }]
         });
 
-      // Fetch and return the updated comments after posting
-      commentView.renderPostComments(res, result);
+        console.log("Document terbuat!");
+      } else {
+        console.log("Updating existing document...");
+        const updatedDoc = await data_komen_video.findOneAndUpdate(
+          { "videoID": ID },
+          {
+            $push: {
+              "comments": {
+                "username": Name,
+                "comment": Comment,
+                "timestamp": new Date().toString()
+              }
+            }
+          },
+          { new: true }
+        );
+
+        console.log("Document Updated Successfully");
+        console.log("Updated Document:", updatedDoc);
+      }
+
+      const updatedComments = await data_komen_video.findOne({ "videoID": ID });
+      commentView.renderPostComments(res, updatedComments);
     }
   } catch (error) {
-    console.log(error);
+    console.error("Error Occurred:", error);
     res.send("Gagal");
   }
 }
+
 
 module.exports = {
   getComments,
