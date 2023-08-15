@@ -7,6 +7,7 @@ Didalam collection `data_video` terdapat:<br />
 -`videoData`: Sebuah array berisi object yang menyimpan informasi video. Didalam `videoData` berisi:<br />
     &emsp;`videoID`: Sebuah string yang merepresentasikan identifier untuk video<br />
     &emsp;`URLthumbnail`: Sebuah string yang merepresentasikan link gambar untuk thumbnail video<br />
+    &emsp;`title`: Sebuah string yang merepresentasikan judul video<br />
 
 2. `data_komen_video` collection:<br />
 Didalam collection `data_komen_video` terdapat:<br />
@@ -122,3 +123,8 @@ atau jika Anda tidak ingin restart server setiap ada perubahan, Anda dapat mengg
 9. Untuk menguji frontend di local, Anda harus mengubah `client_id` pada `server/apis/spotifyLogin` terlebih dahulu dengan client id spotify yang Anda miliki. Untuk mendapatkan client id spotify, Anda dapat menuju developer.spotify.com, lalu buat aplikasi baru. Anda akan mendapatkan client id spotify Anda didalam pengaturan aplikasi yang baru Anda buat.<br />
 10. Didalam aplikasi yang Anda buat tadi, Anda juga harus mengubah settingan callback aplikasi Anda ke `http://localhost:5173` agar frontend dapat berjalan. Didalam `spotifyLogin.jsx` juga ubah variabel `redirect_url` menjadi `http://localhost:5173`<br />
 11. Setelah callback dan client id selesai Anda ubah, Anda dapat menjalankan perintah `npm run dev` untuk menguji frontendnya.
+
+## Fitur
+1. Search video by title<br />
+2. Add comment to video (Login first)<br />
+3. Login (by spotify)<br />
