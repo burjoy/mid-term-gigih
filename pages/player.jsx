@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
-import getComments from '../apis/getComments';
+import getComments from '../server/apis/getComments';
 // import { GlobalContext } from '../context/context';
 import { useGlobalContext } from '../context/context';
 import Product from '../components/products';
 import VideoPlayer from '../components/videoPlayer';
 import DisplayComment from '../components/displayComment';
 import AddComment from '../components/addComment';
-import postKomen from '../apis/postComment';
-import getProducts from '../apis/getProducts';
+import postKomen from '../server/apis/postComment';
+import getProducts from '../server/apis/getProducts';
 
 const MediaPlayers = ({id}) => {
   const {name} = useGlobalContext();
