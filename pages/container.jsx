@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context/context"
 import Cards from "../components/cards"
 import Header from "../components/header"
 import list from "../components/list_song.json"
-import getAllVideos from "../apis/getAllVideo"
+import getAllVideos from "../server/apis/getAllVideo"
 
 function Container(){
     const {search} = useGlobalContext();
