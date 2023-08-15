@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../context/context";
 import LoginButton from "../../components/loginButton";
 
 const client_id = "33fa1509ffad418ca7154c0a7b8af9c5";
-const redirect_url = "http://localhost:5173";
+const redirect_url = "https://mid-term-gigih-frontend.vercel.app/";
 
     function generateRandomString(length) {
         let text = '';
