@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
 
-const format_data_video = new mongoose.Schema({
-    videoData: [{
+const format_data_video = new mongoose.Schema(
+    {
         videoID: String,
-        URLthumbnail: String
-    }]})
+        videoData: [
+            {
+            URLthumbnail: String,
+            title: String
+            }
+        ]
+    })
 
 const format_komen_video = mongoose.Schema({
         videoID: String,
