@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useGlobalContext } from "../context/context";
-import SpotifyLogin from "../apis/spotifyLogin";
+import SpotifyLogin from "../server/apis/spotifyLogin";
 function Header({onSearchLagu}){
     const {setSearch} = useGlobalContext();
 
