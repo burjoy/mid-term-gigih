@@ -7,12 +7,15 @@ const videoController = require('./controllers/videoController');
 const commentController = require('./controllers/commentController');
 const videoView = require('./views/videoView');
 
+require('dotenv').config();
+
 const port = 3000;
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://127.0.0.1/app_db')
+mongoose.connect(process.env.LINK_MONGODB_ATLAS)
   .then((response) => {
     console.log("Berhasil konek ke database");
   })
