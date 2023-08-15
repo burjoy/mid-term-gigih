@@ -6,7 +6,7 @@ async function postKomen(id, message){
         },
         body: JSON.stringify(message)
     }
-    const ambil_data = await fetch(`http://localhost:3000/video/${id}/comments/post`, params);
+    const ambil_data = await fetch(`https://mid-term-gigih-api.vercel.app/video/${id}/comments/post`, params);
     const response = ambil_data.json();
     console.log(response);
 }
