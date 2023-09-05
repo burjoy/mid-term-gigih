@@ -3,7 +3,7 @@ function Product({iklan}){
         <div className="w-1/4 bg-white p-4 rounded-l-lg overflow-y-auto">
         <h2 className="text-xl font-semibold mb-2">Featured Product</h2>
         {iklan?.map((barang, index) => (
-          <div className="hover:border border-black hover:cursor-pointer p-4">
+          <div className="hover:border border-black hover:cursor-pointer p-4 transition-transform transform-gpu hover:scale-105">
           <div className="mb-4" key={index}>
             <img 
               className="w-full h-auto"
