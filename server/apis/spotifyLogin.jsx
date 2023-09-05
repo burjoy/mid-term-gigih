@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../context/context";
 import LoginButton from "../../components/loginButton";
 
 const client_id = "33fa1509ffad418ca7154c0a7b8af9c5";
-const redirect_url = "https://mid-term-gigih-frontend.vercel.app";
+const redirect_url = "http://localhost:5173";
 
     function generateRandomString(length) {
         let text = '';
@@ -83,12 +83,19 @@ const redirect_url = "https://mid-term-gigih-frontend.vercel.app";
       }
     
       useEffect(() => {
+        // Check if there's an access token stored in local storage
+        const storedAccessToken = sessionStorage.getItem("accessToken");
+        if (storedAccessToken) {
+          setAccessCode(storedAccessToken);
+        }
+      
+        // Check for the authorization code in the URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get("code");
-    
+      
         if (code) {
-          const codeVerifier = localStorage.getItem("codeVerifier"); // Retrieve codeVerifier from localStorage
-    
+          const codeVerifier = localStorage.getItem("codeVerifier");
+      
           const body = new URLSearchParams({
             grant_type: "authorization_code",
             code: code,
@@ -96,7 +103,7 @@ const redirect_url = "https://mid-term-gigih-frontend.vercel.app";
             client_id: client_id,
             code_verifier: codeVerifier,
           });
-    
+      
           fetch("https://accounts.spotify.com/api/token", {
             method: "POST",
             headers: {
@@ -112,16 +119,19 @@ const redirect_url = "https://mid-term-gigih-frontend.vercel.app";
             })
             .then((data) => {
               setAccessCode(data.access_token);
-              localStorage.removeItem("codeVerifier"); // Clean up the codeVerifier from localStorage
+              localStorage.removeItem("codeVerifier");
+              sessionStorage.setItem("accessToken", data.access_token); // Store the access token
             })
             .catch((error) => {
               console.error("Error:", error);
             });
         }
-      }, [accessCode]);
+      }, []); // Empty dependency array ensures this runs only once when the component mounts
+      
 
       useEffect(() => {
         console.log(profileImage);
+        const session_token = sessionStorage.getItem("access_token");
         if (accessCode) {
             getProfile();
         }
