@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useGlobalContext } from "../context/context";
 import SpotifyLogin from "../server/apis/spotifyLogin";
+import { Link } from "react-router-dom";
 function Header({onSearchLagu}){
     const {setSearch} = useGlobalContext();
 
@@ -12,7 +13,7 @@ function Header({onSearchLagu}){
     return(
     <header className="bg-emerald-500 py-4">
         <div className="mx-auto flex items-center justify-between px-4">
-            <h1 className="text-2xl text-white">Toko<span className="font-bold">Play</span></h1>
+            <Link to={'/'}><h1 className="text-2xl text-white hover:cursor-pointer">Toko<span className="font-bold">Play</span></h1></Link>
             <input type="search" className="text-center rounded-lg w-[40%]"
             onKeyDown={(e) => {
                 if(e.key === "Enter"){
