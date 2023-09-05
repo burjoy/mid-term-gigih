@@ -1,6 +1,6 @@
 function VideoPlayer({id = "Plv9odDmQ58"}){
     return(
-    <div className="flex-1 relative">
+    <div className="flex-1 relative max-md:flex-auto">
     <iframe
       className="absolute inset-0 w-full h-full"
       src={`https://www.youtube.com/embed/${id}`}
