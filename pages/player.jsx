@@ -48,8 +48,8 @@ const MediaPlayers = ({id}) => {
   };
 
   return (
-    <div className='flex justify-center h-screen items-center'>
-    <div className="flex flex-row h-[85%] bg-gray-100 w-[85%] rounded-lg">
+    <div className='flex justify-center h-screen items-center flex-col'>
+    <div className="flex flex-row h-[85%] bg-gray-100 w-[85%] rounded-lg shadow-md">
       {/*Product*/}
       <Product iklan={product}/>
 
