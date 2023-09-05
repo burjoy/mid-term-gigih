@@ -4,9 +4,10 @@ Aplikasi ini menggunakan MongoDB sebagai database. Di dalam database, terdapat 3
 
 1. `data_video` collection:<br />
 Didalam collection `data_video` terdapat:<br />
+-`videoID`: Sebuah string yang merepresentasikan identifier untuk video<br /> 
 -`videoData`: Sebuah array berisi object yang menyimpan informasi video. Didalam `videoData` berisi:<br />
-    &emsp;`videoID`: Sebuah string yang merepresentasikan identifier untuk video<br />
     &emsp;`URLthumbnail`: Sebuah string yang merepresentasikan link gambar untuk thumbnail video<br />
+    &emsp;`title`: Sebuah string yang merepresentasikan judul video<br />
 
 2. `data_komen_video` collection:<br />
 Didalam collection `data_komen_video` terdapat:<br />
@@ -40,7 +41,8 @@ Success: <br />
 [
     {
         "videoID": string,
-        "URLthumbnail": string
+        "URLthumbnail": string,
+        "title": string
     },
     ...
 ]
@@ -97,7 +99,7 @@ Success: <br />
 &emsp;&emsp;Success: Kode 200<br />
 &emsp;&emsp;Fail: Kode 400
 
-## How To Run
+## How To Run in Local
 Untuk menjalankan program ini secara lokal, berikut langkah-langkahnya:
 1. Clone repository ini ke lokal machine Anda. Apabila Anda menggunakan git, clone repository dapat dilakukan dengan langkah berikut:<br />
    &emsp;-Copy link berikut: https://github.com/burjoy/mid-term-gigih.git<br />
@@ -107,13 +109,22 @@ Untuk menjalankan program ini secara lokal, berikut langkah-langkahnya:
 -`npm install express` untuk menginstall express.js<br />
 -`npm install cors` untuk menginstall package cors<br />
 -`npm install mongoose` untuk menginstall mongoose<br />
+-`npm install dotenv` agar dapat mengakses file .env<br />
 -`npm install --g nodemon` untuk menginstall node monitor (opsional)<br />
-4. Jalankan server MongoDB di local machine Anda dengan mengetik perintah berikut di terminal Anda:<br />
-`mongod --dbpath="lokasi_database"` dengan lokasi_database merupakan tempat dimana database Anda berjalan di local machine. Pada program ini, database yang digunakan bernama app_db. Anda dapat mengubahnya sesuai dengan nama database yang Anda miliki<br />
-5. Sebelum menjalankan server API, generate data untuk database terlebih dahulu. Hal ini dapat dilakukan dengan mengetik `node seeds.js` pada terminal Anda. Perlu diingat, pada file index.js dan seeds.js, database yang digunakan bernama app_db. Apabila database Anda memiliki nama yang lain, Anda dapat mengganti lokasi database pada program terlebih dahulu<br />
+4. Jalankan server MongoDB di local machine Anda dengan membuat file .env di root dan tulis dengan:<br />
+`LINK_MONGODB_ATLAS = mongodb://127.0.0.1/nama_database`<br />
+5. Sebelum menjalankan server API, generate data untuk database terlebih dahulu. Hal ini dapat dilakukan dengan mengetik `node seeds.js` pada terminal Anda.<br />
 6. Jalankan server API dengan mengetik perintah berikut di terminal Anda: <br />
 `node index.js` <br />
 atau jika Anda tidak ingin restart server setiap ada perubahan, Anda dapat menggunakan nodemon:
 `nodemon index.js` <br />
 7. Sekarang, server seharusnya telah berjalan di `http://localhost:3000`<br />
 8. Setelah server API berjalan, Anda dapat mencoba request API program ini. Anda dapat menggunakan postman atau cURL untuk mengujinya <br />
+9. Untuk menguji frontend di local, Anda harus mengubah `client_id` pada `server/apis/spotifyLogin` terlebih dahulu dengan client id spotify yang Anda miliki. Untuk mendapatkan client id spotify, Anda dapat menuju developer.spotify.com, lalu buat aplikasi baru. Anda akan mendapatkan client id spotify Anda didalam pengaturan aplikasi yang baru Anda buat.<br />
+10. Didalam aplikasi yang Anda buat tadi, Anda juga harus mengubah settingan callback aplikasi Anda ke `http://localhost:5173` agar frontend dapat berjalan. Didalam `spotifyLogin.jsx` juga ubah variabel `redirect_url` menjadi `http://localhost:5173`<br />
+11. Setelah callback dan client id selesai Anda ubah, Anda dapat menjalankan perintah `npm run dev` untuk menguji frontendnya.
+
+## Fitur
+1. Search video by title<br />
+2. Add comment to video (Login first)<br />
+3. Login (by spotify)<br />
