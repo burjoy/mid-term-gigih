@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 function Cards({title, id, url = "https://placehold.co/150"}){
     return(
         <>
-        <div className="bg-white rounded-lg p-4 music_card">
+        <div className="bg-white rounded-lg p-4 music_card transition-transform transform-gpu hover:scale-105">
             <Link to={`/video/${id}`}>
                 <img src= {url} alt="" className="w-full mb-4 music_album" width={150} height={150}/>
                 <h2 className="text-lg font-bold music_title">{title}</h2>
